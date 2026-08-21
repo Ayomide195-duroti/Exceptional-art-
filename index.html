@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Exceptional Art & Prints | Branding, Printing & Packaging in Lagos</title>
+<meta name="description" content="The Exceptional Art & Prints is a Lagos based creative branding, printing, packaging and custom production studio. Custom packaging, branded bags, business branding and print materials. A perfect blend of creativity, clarity and communication.">
+<meta name="keywords" content="printing company in Lagos, branding and printing Lagos, custom packaging Lagos, branded bags Nigeria, custom printing Nigeria, business branding Lagos">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Exceptional Art & Prints | Branding, Printing & Packaging in Lagos">
+<meta property="og:description" content="Creative branding, printing and packaging solutions that turn ideas into memorable experiences. Based in Lagos, Nigeria.">
+<meta property="og:image" content="images/exceptional-art-office-favy.jpg">
+<meta property="og:locale" content="en_NG">
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#101210;
+  --ink-soft:#2b2f2b;
+  --paper:#FAFAF6;
+  --paper-dim:#F1EFE7;
+  --green:#238C46;
+  --green-bright:#39B95B;
+  --green-deep:#0E3A20;
+  --yellow:#F3B516;
+  --orange:#E8641C;
+  --line: rgba(16,18,16,0.12);
+  --line-light: rgba(250,250,246,0.18);
+
+  --font-display:'Space Grotesk', sans-serif;
+  --font-mono:'Space Mono', monospace;
+  --font-body:'Inter', sans-serif;
+
+  --container: 1240px;
+  --ease: cubic-bezier(.16,.84,.44,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--font-display);margin:0;line-height:1.05;letter-spacing:-0.01em;}
+p{margin:0;}
+ul{list-style:none;margin:0;padding:0;}
+button{font-family:inherit;cursor:pointer;}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 28px;}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--green);
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:"";
+  width:22px;height:2px;
+  background:var(--green);
+  display:inline-block;
+}
+::selection{background:var(--yellow);color:var(--ink);}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+}
+
+/* ============ CROP MARK / REGISTRATION MOTIF ============ */
+.crop{position:relative;}
+.crop::before,.crop::after,.crop .cm-tl,.crop .cm-br{position:absolute;pointer-events:none;}
+.cropmarks span{
+  position:absolute;
+  width:14px;height:14px;
+  border:1.5px solid currentColor;
+  opacity:0.55;
+}
+.cropmarks span.tl{top:-7px;left:-7px;border-right:none;border-bottom:none;}
+.cropmarks span.tr{top:-7px;right:-7px;border-left:none;border-bottom:none;}
+.cropmarks span.bl{bottom:-7px;left:-7px;border-right:none;border-top:none;}
+.cropmarks span.br{bottom:-7px;right:-7px;border-left:none;border-top:none;}
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .9s var(--ease), transform .9s var(--ease);}
+.reveal-scale.in{opacity:1;transform:scale(1);}
+.stagger.in > *{transition-delay:calc(var(--i,0) * 90ms);}
+
+/* ============ NAV ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:20px 0;
+  transition: padding .35s var(--ease), background .35s var(--ease), box-shadow .35s var(--ease);
+}
+header.scrolled{
+  padding:12px 0;
+  background:rgba(250,250,246,0.86);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);
+}
+.navbar{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand img{height:38px;width:auto;transition:transform .4s var(--ease);}
+.brand-name{font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-0.01em;line-height:1.1;}
+.brand-name em{display:block;font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:0.12em;color:var(--green);text-transform:uppercase;font-weight:400;}
+nav.links{display:flex;align-items:center;gap:34px;}
+nav.links a{font-size:14.5px;font-weight:500;position:relative;padding:4px 0;}
+nav.links a:not(.btn)::after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--green);
+  transition:width .3s var(--ease);
+}
+nav.links a:not(.btn):hover::after{width:100%;}
+.nav-actions{display:flex;align-items:center;gap:18px;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;
+  border-radius:100px;
+  font-size:13.5px;font-weight:600;letter-spacing:0.02em;
+  border:1.5px solid var(--ink);
+  transition:transform .35s var(--ease), background .35s, color .35s, border-color .35s, box-shadow .35s;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--green);border-color:var(--green);color:#fff;}
+.btn-primary:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,18,16,0.18);}
+.btn-outline{background:transparent;color:var(--ink);}
+.btn-outline:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
+.btn-light{border-color:rgba(250,250,246,0.5);color:var(--paper);}
+.btn-light:hover{background:var(--paper);color:var(--ink);}
+.btn-yellow{background:var(--yellow);border-color:var(--yellow);color:var(--ink);}
+.btn-yellow:hover{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:translateY(-2px);}
+
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);align-items:center;justify-content:center;background:none;position:relative;z-index:1100;}
+.burger span, .burger span::before, .burger span::after{
+  content:"";display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:transform .3s var(--ease), opacity .3s var(--ease);
+}
+.burger span::before{position:absolute;top:-6px;left:0;}
+.burger span::after{position:absolute;top:6px;left:0;}
+.burger.open span{background:transparent;}
+.burger.open span::before{transform:rotate(45deg);top:0;}
+.burger.open span::after{transform:rotate(-45deg);top:0;}
+
+.mobile-menu{
+  position:fixed;inset:0;background:var(--ink);z-index:1050;
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:26px;
+  padding:40px;
+  transform:translateY(-100%);
+  transition:transform .5s var(--ease);
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{color:var(--paper);font-family:var(--font-display);font-size:34px;font-weight:600;}
+.mobile-menu .mm-cta{margin-top:20px;}
+.mobile-menu .mm-social{display:flex;gap:18px;margin-top:30px;}
+.mobile-menu .mm-social a{font-size:13px;font-family:var(--font-mono);color:var(--paper);opacity:.7;}
+.mm-close{
+  position:absolute;top:24px;right:24px;
+  width:44px;height:44px;border-radius:50%;
+  border:1.5px solid var(--line-light);
+  background:none;display:flex;align-items:center;justify-content:center;
+}
+.mm-close span, .mm-close span::before, .mm-close span::after{
+  content:"";display:block;width:18px;height:2px;background:var(--paper);position:relative;
+}
+.mm-close span{background:transparent;}
+.mm-close span::before{position:absolute;top:0;left:0;transform:rotate(45deg);}
+.mm-close span::after{position:absolute;top:0;left:0;transform:rotate(-45deg);}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  padding:168px 0 110px;
+  background:var(--paper);
+  overflow:hidden;
+}
+.hero-halftone{
+  position:absolute;right:-120px;top:-80px;width:520px;height:520px;
+  background-image:radial-gradient(var(--ink) 1.4px, transparent 1.4px);
+  background-size:14px 14px;
+  opacity:0.06;
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:50px;align-items:center;position:relative;}
+.hero-eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--green);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.hero-eyebrow::before{content:"";width:22px;height:2px;background:var(--green);}
+.hero h1{
+  font-size:clamp(40px, 5.4vw, 74px);
+  font-weight:700;
+  letter-spacing:-0.02em;
+}
+.hero h1 .line{display:block;overflow:hidden;}
+.hero h1 .line span{display:inline-block;transform:translateY(115%);transition:transform 1s var(--ease);}
+.hero h1.play .line span{transform:translateY(0);}
+.hero h1 .line:nth-child(1) span{transition-delay:.05s;}
+.hero h1 .line:nth-child(2) span{transition-delay:.18s;}
+.hero h1 .line:nth-child(3) span{transition-delay:.31s;}
+.hero h1 .accent{color:var(--green);}
+.hero-sub{
+  margin-top:26px;max-width:480px;font-size:17.5px;line-height:1.6;color:var(--ink-soft);
+  opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease) .55s, transform .8s var(--ease) .55s;
+}
+.hero-sub.play{opacity:1;transform:translateY(0);}
+.hero-ctas{
+  margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;
+  opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease) .7s, transform .8s var(--ease) .7s;
+}
+.hero-ctas.play{opacity:1;transform:translateY(0);}
+
+.hero-collage{
+  position:relative;height:520px;
+  opacity:0;transform:scale(.92);transition:opacity 1s var(--ease) .3s, transform 1s var(--ease) .3s;
+}
+.hero-collage.play{opacity:1;transform:scale(1);}
+.collage-card{
+  position:absolute;background:#fff;padding:10px 10px 34px;
+  box-shadow:0 30px 60px -20px rgba(16,18,16,.35), 0 2px 8px rgba(16,18,16,.08);
+  border-radius:4px;
+}
+.collage-card img{border-radius:2px;width:100%;height:100%;object-fit:cover;}
+.collage-card .cap{
+  position:absolute;bottom:8px;left:12px;right:12px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.03em;color:var(--ink-soft);
+}
+.c1{width:230px;height:280px;top:0;left:36px;transform:rotate(-6deg);z-index:3;animation:float1 7s ease-in-out infinite;}
+.c2{width:190px;height:230px;top:60px;right:0;transform:rotate(7deg);z-index:2;animation:float2 8s ease-in-out infinite;}
+.c3{width:200px;height:250px;bottom:0;left:0;transform:rotate(4deg);z-index:2;animation:float1 9s ease-in-out infinite 1s;}
+.c4{width:170px;height:200px;bottom:-10px;right:30px;transform:rotate(-8deg);z-index:1;animation:float2 7.5s ease-in-out infinite .5s;}
+@keyframes float1{0%,100%{transform:rotate(-6deg) translateY(0);}50%{transform:rotate(-6deg) translateY(-12px);}}
+@keyframes float2{0%,100%{transform:rotate(7deg) translateY(0);}50%{transform:rotate(7deg) translateY(-10px);}}
+.hero-chevron{
+  position:absolute;width:120px;height:120px;background:var(--green-bright);
+  clip-path:polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 30% 50%);
+  right:-30px;bottom:60px;z-index:0;opacity:.9;
+}
+@media (prefers-reduced-motion: reduce){.collage-card{animation:none !important;}}
+
+/* section divider chevron strip */
+.divider{
+  height:34px;width:100%;
+  background:var(--ink);
+  clip-path:polygon(0 0,100% 0,100% 60%,97% 100%,94% 60%,91% 100%,88% 60%,85% 100%,82% 60%,79% 100%,76% 60%,73% 100%,70% 60%,67% 100%,64% 60%,61% 100%,58% 60%,55% 100%,52% 60%,49% 100%,46% 60%,43% 100%,40% 60%,37% 100%,34% 60%,31% 100%,28% 60%,25% 100%,22% 60%,19% 100%,16% 60%,13% 100%,10% 60%,7% 100%,4% 60%,1% 100%,0 60%);
+}
+
+/* ============ SECTION BASE ============ */
+section{padding:110px 0;position:relative;}
+.section-head{max-width:640px;margin-bottom:60px;}
+.section-head h2{font-size:clamp(30px,4vw,48px);font-weight:700;}
+.section-head p{margin-top:16px;font-size:16.5px;color:var(--ink-soft);line-height:1.65;}
+
+/* ============ SERVICES ============ */
+.services-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:18px;
+}
+.svc-card{
+  grid-column:span 3;
+  background:var(--paper-dim);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:34px 30px;
+  position:relative;
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), background .45s var(--ease);
+  overflow:hidden;
+}
+.svc-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--green),var(--yellow),var(--orange));
+  transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);
+}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 24px 44px -20px rgba(16,18,16,.25);background:#fff;}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-card .num{font-family:var(--font-mono);font-size:12px;color:var(--green);letter-spacing:.06em;}
+.svc-card h3{margin-top:18px;font-size:21px;font-weight:600;}
+.svc-card p{margin-top:10px;font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
+.svc-card.wide{grid-column:span 6;display:grid;grid-template-columns:1.3fr 1fr;align-items:center;gap:24px;}
+.svc-card.tall{grid-row:span 2;}
+.svc-card.dark{background:var(--ink);color:var(--paper);}
+.svc-card.dark p{color:rgba(250,250,246,.72);}
+.svc-card.dark .num{color:var(--yellow);}
+
+.svc-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin:24px -16px -12px;
+  padding:14px 16px;
+  border-radius:12px;
+  background:rgba(35,140,70,.08);
+  font-family:var(--font-display);
+  font-size:24px;
+  font-weight:700;
+  color:var(--green);
+  text-decoration:none;
+  line-height:1;
+  transition:gap .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+}
+.svc-cta .arrow{font-size:22px;transition:transform .3s var(--ease);}
+.svc-cta:hover, .svc-cta:focus-visible{gap:14px;background:rgba(35,140,70,.16);}
+.svc-cta:hover .arrow, .svc-cta:focus-visible .arrow{transform:translateX(4px);}
+.svc-card.dark .svc-cta{color:var(--green-bright);background:rgba(57,185,91,.12);}
+.svc-card.dark .svc-cta:hover, .svc-card.dark .svc-cta:focus-visible{background:rgba(57,185,91,.22);}
+.svc-card.wide .svc-cta{margin-top:24px;}
+
+@media (max-width:900px){
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .svc-card{grid-column:span 2 !important;}
+  .svc-card.tall{grid-row:auto;}
+  .svc-card.wide{grid-template-columns:1fr;}
+}
+
+@media (max-width:480px){
+  .svc-cta{font-size:21px;padding:13px 14px;margin:20px -13px -10px;}
+  .svc-cta .arrow{font-size:19px;}
+}
+
+/* ============ PORTFOLIO ============ */
+.portfolio{background:var(--ink);color:var(--paper);}
+.portfolio .eyebrow{color:var(--yellow);}
+.portfolio .eyebrow::before{background:var(--yellow);}
+.portfolio .section-head p{color:rgba(250,250,246,.7);}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;}
+.filter-btn{
+  padding:10px 20px;border-radius:100px;border:1.5px solid rgba(250,250,246,.28);
+  font-size:13px;font-family:var(--font-mono);letter-spacing:.03em;background:transparent;color:var(--paper);
+  transition:all .3s var(--ease);
+}
+.filter-btn:hover{border-color:var(--green-bright);}
+.filter-btn.active{background:var(--green-bright);border-color:var(--green-bright);color:var(--ink);font-weight:700;}
+
+.p-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.p-item{
+  position:relative;border-radius:12px;overflow:hidden;cursor:pointer;
+  background:#181a18;
+  transition:opacity .5s var(--ease), transform .5s var(--ease);
+  aspect-ratio:4/5;
+}
+.p-item.hide{display:none;}
+.p-item .imgwrap{position:absolute;inset:0;}
+.p-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
+.p-item:hover img{transform:scale(1.08);}
+.p-item .overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(16,18,16,0) 40%,rgba(16,18,16,.92) 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+}
+.p-item .tag{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--yellow);margin-bottom:6px;
+  transform:translateY(8px);opacity:.85;transition:transform .4s var(--ease);
+}
+.p-item .pname{
+  font-family:var(--font-display);font-weight:600;font-size:18px;color:#fff;
+  position:relative;
+}
+.p-item .pname::after{
+  content:"";display:block;height:2px;width:0;margin-top:8px;
+  background:linear-gradient(90deg,var(--green-bright),var(--orange));
+  transition:width .45s var(--ease);
+}
+.p-item:hover .pname::after{width:44px;}
+.p-item.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
+@media (max-width:1000px){
+  .p-grid{grid-template-columns:repeat(2,1fr);}
+  .p-item.big{grid-column:span 2;grid-row:auto;aspect-ratio:16/11;}
+}
+@media (max-width:560px){
+  .p-grid{grid-template-columns:1fr;}
+  .p-item.big{grid-column:span 1;}
+}
+
+/* ============ ABOUT ============ */
+.about{overflow:hidden;}
+.about-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:70px;align-items:center;}
+.about-copy p{font-size:17px;line-height:1.75;color:var(--ink-soft);}
+.about-copy p + p{margin-top:20px;}
+.about-copy .lead{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:22px;}
+.about-visual{position:relative;}
+.about-visual .shape{
+  position:absolute;inset:0;
+  background:var(--green);
+  clip-path:polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%);
+  transform:translate(22px,22px);
+  z-index:0;
+}
+.about-visual .frame{
+  position:relative;z-index:1;
+  clip-path:polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%);
+  overflow:hidden;border:1px solid var(--line);
+}
+.about-visual img{width:100%;height:520px;object-fit:cover;}
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .about-visual{order:-1;}
+  .about-visual img{height:340px;}
+}
+
+/* ============ PROCESS ============ */
+.process{background:var(--paper-dim);}
+.process-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:20px;}
+.process-line{
+  position:absolute;top:26px;left:0;right:0;height:2px;background:var(--line);z-index:0;
+}
+.process-line-fill{
+  position:absolute;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--green),var(--yellow),var(--orange));
+  transition:width 1.4s var(--ease);
+}
+.p-step{position:relative;z-index:1;}
+.p-step .dot{
+  width:52px;height:52px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-weight:700;font-size:15px;
+  transition:background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease);
+}
+.p-step.in .dot{background:var(--green);color:#fff;border-color:var(--green);transform:scale(1.08);}
+.p-step h3{margin-top:22px;font-size:19px;font-weight:600;}
+.p-step p{margin-top:8px;font-size:14.5px;color:var(--ink-soft);line-height:1.6;max-width:230px;}
+@media (max-width:900px){
+  .process-track{grid-template-columns:1fr;gap:36px;}
+  .process-line{display:none;}
+}
+
+/* ============ WHY CHOOSE US ============ */
+.why-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.why-card{
+  border:1.5px dashed var(--line);
+  border-radius:16px;
+  padding:30px 20px;
+  text-align:center;
+  transition:transform .4s var(--ease), border-color .4s var(--ease);
+  position:relative;
+}
+.why-card:hover{transform:rotate(-2deg) translateY(-4px);border-color:var(--green);}
+.why-card:nth-child(even):hover{transform:rotate(2deg) translateY(-4px);}
+.why-badge{
+  width:60px;height:60px;border-radius:50%;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-weight:700;font-size:18px;
+}
+.why-card:nth-child(1) .why-badge{background:var(--green);}
+.why-card:nth-child(2) .why-badge{background:var(--orange);}
+.why-card:nth-child(3) .why-badge{background:var(--yellow);color:var(--ink);}
+.why-card:nth-child(4) .why-badge{background:var(--ink);}
+.why-card:nth-child(5) .why-badge{background:var(--green-deep);}
+.why-card h3{font-size:16px;font-weight:600;}
+@media (max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ============ WHO WE WORK WITH ============ */
+.who{background:var(--paper-dim);}
+.who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.who-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:28px 20px;
+  text-align:center;
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+}
+.who-card:hover{transform:translateY(-6px);box-shadow:0 20px 36px -20px rgba(16,18,16,.22);border-color:var(--green);}
+.who-emoji{font-size:30px;line-height:1;margin-bottom:14px;}
+.who-card h3{font-size:15.5px;font-weight:600;}
+@media (max-width:900px){.who-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ============ FAQ ============ */
+.faq{max-width:820px;margin:0 auto;}
+.faq-item{
+  border-bottom:1px solid var(--line);
+}
+.faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:24px 4px;
+  font-family:var(--font-display);
+  font-size:17.5px;
+  font-weight:600;
+  color:var(--ink);
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item .faq-icon{
+  flex:none;
+  width:28px;height:28px;border-radius:50%;
+  border:1.5px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--green);
+  transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease);
+}
+.faq-item[open] .faq-icon{transform:rotate(45deg);background:var(--green);color:#fff;border-color:var(--green);}
+.faq-item p{margin:0 4px 24px;font-size:15px;color:var(--ink-soft);line-height:1.7;max-width:680px;}
+@media (max-width:600px){
+  .faq-item summary{font-size:16px;padding:18px 2px;}
+}
+
+/* ============ CTA ============ */
+.cta{
+  background:var(--green-deep);
+  color:var(--paper);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(250,250,246,.5) 1.3px, transparent 1.3px);
+  background-size:16px 16px;opacity:.07;
+}
+.cta h2{font-size:clamp(30px,5vw,54px);max-width:760px;margin:0 auto;position:relative;}
+.cta p{margin-top:18px;font-size:17px;color:rgba(250,250,246,.75);position:relative;}
+.cta .cta-btns{margin-top:38px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;}
+.contact-info h2{font-size:clamp(28px,3.6vw,40px);}
+.contact-info p.desc{margin-top:16px;color:var(--ink-soft);font-size:16px;line-height:1.6;max-width:400px;}
+.info-list{margin-top:34px;display:flex;flex-direction:column;gap:22px;}
+.info-item{display:flex;gap:16px;align-items:flex-start;}
+.info-ico{
+  width:44px;height:44px;border-radius:50%;background:var(--paper-dim);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:17px;
+}
+.info-item .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);}
+.info-item .val{margin-top:4px;font-size:16px;font-weight:500;}
+.social-row{display:flex;gap:12px;margin-top:32px;}
+.social-row a{
+  width:42px;height:42px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-size:12px;transition:all .3s var(--ease);
+}
+.social-row a:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px);}
+
+.form-card{
+  background:var(--ink);color:var(--paper);border-radius:18px;padding:40px;
+}
+.form-card h3{font-size:22px;font-weight:600;margin-bottom:26px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,246,.6);margin-bottom:8px;}
+.field input, .field select, .field textarea{
+  width:100%;background:rgba(250,250,246,.06);border:1px solid rgba(250,250,246,.18);border-radius:8px;
+  padding:13px 14px;color:var(--paper);font-family:var(--font-body);font-size:14.5px;
+  transition:border-color .3s var(--ease), background .3s var(--ease);
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none;border-color:var(--green-bright);background:rgba(250,250,246,.1);
+}
+.field textarea{resize:vertical;min-height:100px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-submit{width:100%;justify-content:center;margin-top:6px;}
+.form-note{font-size:12.5px;color:rgba(250,250,246,.5);margin-top:14px;text-align:center;}
+.form-success{
+  display:none;text-align:center;padding:30px 10px;
+}
+.form-success.show{display:block;}
+.form-success .check{
+  width:56px;height:56px;border-radius:50%;background:var(--green-bright);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;font-weight:700;
+}
+@media (max-width:900px){
+  .contact-grid{grid-template-columns:1fr;gap:40px;}
+  .field-row{grid-template-columns:1fr;}
+}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:var(--paper);padding:70px 0 26px;}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(250,250,246,.14);}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.footer-brand img{height:36px;}
+.footer-brand span{font-family:var(--font-display);font-weight:700;font-size:16px;}
+.footer-tagline{font-size:14px;color:rgba(250,250,246,.6);max-width:260px;line-height:1.6;}
+.footer-col h4{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,250,246,.55);margin-bottom:18px;}
+.footer-col ul{display:flex;flex-direction:column;gap:12px;}
+.footer-col a{font-size:14.5px;color:rgba(250,250,246,.85);transition:color .3s;}
+.footer-col a:hover{color:var(--green-bright);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;flex-wrap:wrap;gap:14px;}
+.footer-bottom p{font-size:13px;color:rgba(250,250,246,.45);}
+.footer-social{display:flex;gap:14px;}
+.footer-social a{font-size:13px;color:rgba(250,250,246,.6);font-family:var(--font-mono);}
+.footer-social a:hover{color:var(--yellow);}
+
+/* WhatsApp float button */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:900;
+  width:58px;height:58px;border-radius:50%;background:var(--green-bright);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 30px -8px rgba(35,140,70,.6);
+  transition:transform .35s var(--ease);
+}
+.wa-float:hover{transform:scale(1.08);}
+.wa-float svg{width:28px;height:28px;}
+
+/* skip link + focus */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+  outline:2.5px solid var(--green-bright); outline-offset:2px;
+}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:12px 18px;z-index:2000;}
+.skip-link:focus{left:16px;top:16px;}
+
+@media (max-width:900px){
+  nav.links, .nav-actions .btn-outline{display:none;}
+  .burger{display:flex;}
+  .hero{padding:140px 0 80px;}
+  .hero-grid{grid-template-columns:1fr;gap:56px;}
+  .hero-collage{height:420px;}
+  .services-grid{gap:14px;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:34px;}
+}
+@media (max-width:560px){
+  .wrap{padding:0 20px;}
+  section{padding:76px 0;}
+  .footer-top{grid-template-columns:1fr;}
+  .collage-card.c2, .collage-card.c4{display:none;}
+  .hero-collage{height:340px;}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header id="siteHeader">
+  <div class="wrap navbar">
+    <a href="#home" class="brand" aria-label="The Exceptional Art & Prints, home">
+      <img src="images/logo-color-800.jpg" alt="The Exceptional Art & Prints logo" width="38" height="38">
+      <span class="brand-name">The Exceptional Art<em>& Prints</em></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-outline">Start a Project</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mm-close" id="mmCloseBtn" aria-label="Close menu"><span></span></button>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#work">Our Work</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="btn btn-yellow mm-cta">Start a Project</a>
+  <div class="mm-social">
+    <a href="https://instagram.com/theexceptionalart" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://tiktok.com/@theexceptionalart" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://facebook.com/theexceptionalart" target="_blank" rel="noopener">Facebook</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-halftone" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-eyebrow">Lagos, Nigeria · Creative Print Studio</p>
+      <h1 id="heroHeading">
+        <span class="line"><span>YOUR BRAND</span></span>
+        <span class="line"><span>DESERVES TO BE</span></span>
+        <span class="line"><span class="accent">EXCEPTIONAL.</span></span>
+      </h1>
+      <p class="hero-sub" id="heroSub">Creative branding, printing and packaging solutions that turn ideas into memorable experiences.</p>
+      <div class="hero-ctas" id="heroCtas">
+        <a href="#contact" class="btn btn-primary">Start a Project</a>
+        <a href="#work" class="btn btn-outline">View Our Work</a>
+      </div>
+    </div>
+    <div class="hero-collage" id="heroCollage" aria-hidden="true">
+      <div class="hero-chevron"></div>
+      <div class="collage-card c1">
+        <img src="images/tophyn-paperbag-800.jpg" srcset="images/tophyn-paperbag-800.webp 800w, images/tophyn-paperbag.webp 1600w" alt="Custom branded paper bag for Tophyn Naturals" loading="eager" width="800" height="1067">
+        <span class="cap">Tophyn Naturals · Bag</span>
+      </div>
+      <div class="collage-card c2">
+        <img src="images/dreamy-velvet-thankyou-800.jpg" srcset="images/dreamy-velvet-thankyou-800.webp 800w, images/dreamy-velvet-thankyou.webp 1600w" alt="Printed thank you cards for Dreamy Velvet by Favelle House" loading="eager" width="800" height="1067">
+        <span class="cap">Favelle House · Cards</span>
+      </div>
+      <div class="collage-card c3">
+        <img src="images/benydon-bags-800.jpg" srcset="images/benydon-bags-800.webp 800w, images/benydon-bags.webp 1600w" alt="Branded shopping bags for BenyDon Fashion Enterprises" loading="eager" width="800" height="1067">
+        <span class="cap">BenyDon · Bags</span>
+      </div>
+      <div class="collage-card c4">
+        <img src="images/emike-by-design-bag-800.jpg" srcset="images/emike-by-design-bag-800.webp 800w, images/emike-by-design-bag.webp 1600w" alt="Branded packaging bag for Emike By Design" loading="eager" width="800" height="1067">
+        <span class="cap">Emike By Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What We Do</p>
+      <h2>What We Create</h2>
+      <p>From the first sketch to the finished, packed product, everything we make is designed to help your brand stand out and stay memorable.</p>
+    </div>
+
+    <div class="services-grid stagger" id="servicesGrid">
+      <div class="svc-card wide dark reveal" style="--i:0">
+        <div>
+          <span class="num">01</span>
+          <h3>Custom Packaging & Boxes</h3>
+          <p>Rigid boxes, gift packaging and product boxes designed and produced to protect your product and elevate the unboxing experience.</p>
+          <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <img src="images/exceptional-art-office-favy-800.jpg" srcset="images/exceptional-art-office-favy-800.webp 800w, images/exceptional-art-office-favy.webp 1600w" alt="Purple custom packaging boxes produced for Favy Body Goals" loading="lazy" style="border-radius:10px;width:100%;height:180px;object-fit:cover;" width="800" height="180">
+      </div>
+      <div class="svc-card reveal" style="--i:1">
+        <span class="num">02</span>
+        <h3>Branded Shopping Bags</h3>
+        <p>Paper and poly shopping bags printed with your logo and brand story, sized for retail, fashion and beauty products.</p>
+        <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-card reveal" style="--i:2">
+        <span class="num">03</span>
+        <h3>Business Branding</h3>
+        <p>Cohesive visual identity: logos, colours and brand materials that make your business instantly recognisable.</p>
+        <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-card tall reveal" style="--i:3">
+        <span class="num">04</span>
+        <h3>Labels & Product Packaging</h3>
+        <p>Custom labels, stickers and packaging inserts for skincare, beauty and lifestyle products, printed to spec, every batch.</p>
+        <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-card reveal" style="--i:4">
+        <span class="num">05</span>
+        <h3>Promotional Printing</h3>
+        <p>Flyers, banners and promotional materials that get your message out and get your brand noticed.</p>
+        <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-card reveal" style="--i:5">
+        <span class="num">06</span>
+        <h3>Branded Ribbons</h3>
+        <p>Woven and printed ribbons for gift wrap, packaging finishing touches and signature brand detail.</p>
+        <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-card wide reveal" style="--i:6">
+        <div>
+          <span class="num">07</span>
+          <h3>Marketing & Print Materials</h3>
+          <p>Business cards, brochures and everyday print collateral, produced with the same care as your flagship packaging.</p>
+          <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="svc-card reveal" style="--i:7">
+        <span class="num">08</span>
+        <h3>Custom Design & Production</h3>
+        <p>Have something specific in mind? We design and produce bespoke pieces built around your idea.</p>
+        <a href="#contact" class="svc-cta">Get a Quote <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Portfolio</p>
+      <h2>Our Work</h2>
+      <p>A look at real branding, packaging and print work produced for businesses across Lagos and beyond.</p>
+    </div>
+
+    <div class="filters reveal" role="tablist" aria-label="Filter portfolio by category">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="packaging">Packaging</button>
+      <button class="filter-btn" data-filter="bags">Bags</button>
+      <button class="filter-btn" data-filter="branding">Branding</button>
+      <button class="filter-btn" data-filter="printing">Printing</button>
+      <button class="filter-btn" data-filter="custom">Custom Projects</button>
+    </div>
+
+    <div class="p-grid" id="portfolioGrid">
+
+      <div class="p-item big reveal-scale" data-cat="packaging custom">
+        <div class="imgwrap">
+          <img src="images/exceptional-art-office-favy-800.jpg" srcset="images/exceptional-art-office-favy-800.webp 800w, images/exceptional-art-office-favy.webp 1600w" alt="Custom leopard print gift boxes with ribbon handles produced for Favy Body Goals" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Packaging · Custom</span>
+          <h3 class="pname">Favy Body Goals · Gift Boxes</h3>
+        </div>
+      </div>
+
+      <div class="p-item reveal-scale" data-cat="bags branding">
+        <div class="imgwrap">
+          <img src="images/tophyn-paperbag-800.jpg" srcset="images/tophyn-paperbag-800.webp 800w, images/tophyn-paperbag.webp 1600w" alt="Branded paper bag illustration for Tophyn Naturals" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Bags · Branding</span>
+          <h3 class="pname">Tophyn Naturals · Paper Bag</h3>
+        </div>
+      </div>
+
+      <div class="p-item reveal-scale" data-cat="bags printing">
+        <div class="imgwrap">
+          <img src="images/tophyn-mailer-800.jpg" srcset="images/tophyn-mailer-800.webp 800w, images/tophyn-mailer.webp 1600w" alt="Printed mailer bag for Tophyn Naturals skincare" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Bags · Printing</span>
+          <h3 class="pname">Tophyn Naturals · Mailer</h3>
+        </div>
+      </div>
+
+      <div class="p-item reveal-scale" data-cat="printing branding">
+        <div class="imgwrap">
+          <img src="images/dreamy-velvet-thankyou-800.jpg" srcset="images/dreamy-velvet-thankyou-800.webp 800w, images/dreamy-velvet-thankyou.webp 1600w" alt="Printed thank you cards designed for Dreamy Velvet by Favelle House Limited" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Printing · Branding</span>
+          <h3 class="pname">Favelle House · Thank You Cards</h3>
+        </div>
+      </div>
+
+      <div class="p-item reveal-scale" data-cat="bags packaging">
+        <div class="imgwrap">
+          <img src="images/benydon-bags-800.jpg" srcset="images/benydon-bags-800.webp 800w, images/benydon-bags.webp 1600w" alt="Printed shopping bags for BenyDon Fashion Enterprises" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Bags · Packaging</span>
+          <h3 class="pname">BenyDon Fashion · Shopping Bags</h3>
+        </div>
+      </div>
+
+      <div class="p-item reveal-scale" data-cat="bags branding">
+        <div class="imgwrap">
+          <img src="images/emike-by-design-bag-800.jpg" srcset="images/emike-by-design-bag-800.webp 800w, images/emike-by-design-bag.webp 1600w" alt="Teal branded bag with gold foil detail for Emike By Design" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Bags · Branding</span>
+          <h3 class="pname">Emike By Design · Branded Bag</h3>
+        </div>
+      </div>
+
+      <div class="p-item reveal-scale" data-cat="custom printing">
+        <div class="imgwrap">
+          <img src="images/seancole-ribbon-800.jpg" srcset="images/seancole-ribbon-800.webp 800w, images/seancole-ribbon.webp 1600w" alt="Custom printed ribbon spool for SeanCole" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Custom · Printing</span>
+          <h3 class="pname">SeanCole · Branded Ribbon</h3>
+        </div>
+      </div>
+
+      <div class="p-item reveal-scale" data-cat="packaging">
+        <div class="imgwrap">
+          <img src="images/prisgloss-box-800.jpg" srcset="images/prisgloss-box-800.webp 800w, images/prisgloss-box.webp 1600w" alt="Custom lip gloss packaging box for Prisgloss" loading="lazy" width="800" height="1067">
+        </div>
+        <div class="overlay">
+          <span class="tag">Packaging</span>
+          <h3 class="pname">Prisgloss · Product Packaging</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <p class="eyebrow">About Us</p>
+      <h2 class="lead">A perfect blend of creativity, clarity and communication.</h2>
+      <p>The Exceptional Art & Prints is a Lagos based creative studio helping businesses bring their branding and physical marketing materials to life, from packaging and shopping bags to labels, ribbons and print collateral.</p>
+      <p>We work closely with every client to understand what their brand needs to say, then design and produce materials that communicate it clearly, consistently and beautifully, so your customers notice, remember and come back.</p>
+      <p>Every project moves through the same care: a clear conversation, thoughtful design, and production that respects your brand down to the finish.</p>
+    </div>
+    <div class="about-visual reveal-scale">
+      <div class="shape" aria-hidden="true"></div>
+      <div class="frame">
+        <img src="images/exceptional-art-office-favy-800.jpg" srcset="images/exceptional-art-office-favy-800.webp 800w, images/exceptional-art-office-favy.webp 1600w" alt="The Exceptional Art & Prints studio sign with finished packaging on display" loading="lazy" width="800" height="1067">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">How It Works</p>
+      <h2>Our Process</h2>
+      <p>A straightforward four step run from your first idea to finished, branded materials in your hands.</p>
+    </div>
+    <div class="process-track" id="processTrack">
+      <div class="process-line"><div class="process-line-fill" id="processFill"></div></div>
+      <div class="p-step reveal" data-step>
+        <div class="dot">01</div>
+        <h3>Share Your Idea</h3>
+        <p>Tell us what you need, your product, your brand and what you're hoping to achieve.</p>
+      </div>
+      <div class="p-step reveal" data-step>
+        <div class="dot">02</div>
+        <h3>We Create</h3>
+        <p>Your idea is transformed into a professional design, refined together with you.</p>
+      </div>
+      <div class="p-step reveal" data-step>
+        <div class="dot">03</div>
+        <h3>We Produce</h3>
+        <p>We print and produce your finished materials with careful attention to detail.</p>
+      </div>
+      <div class="p-step reveal" data-step>
+        <div class="dot">04</div>
+        <h3>You Stand Out</h3>
+        <p>Your finished branded materials are ready for your customers to experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Why Choose Us</p>
+      <h2>Built on care, not shortcuts.</h2>
+    </div>
+    <div class="why-grid stagger">
+      <div class="why-card reveal" style="--i:0"><div class="why-badge">✦</div><h3>Creativity</h3></div>
+      <div class="why-card reveal" style="--i:1"><div class="why-badge">✓</div><h3>Quality</h3></div>
+      <div class="why-card reveal" style="--i:2"><div class="why-badge">◎</div><h3>Attention to Detail</h3></div>
+      <div class="why-card reveal" style="--i:3"><div class="why-badge">✉</div><h3>Professional Communication</h3></div>
+      <div class="why-card reveal" style="--i:4"><div class="why-badge">◆</div><h3>Custom Solutions</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO WE WORK WITH ============ -->
+<section class="who" id="who">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Who We Work With</p>
+      <h2>Businesses of every kind, one standard of care.</h2>
+      <p>Whatever you're building, we bring the same attention to detail to your branding, packaging and print materials.</p>
+    </div>
+    <div class="who-grid stagger">
+      <div class="who-card reveal" style="--i:0"><div class="who-emoji">👗</div><h3>Fashion Brands</h3></div>
+      <div class="who-card reveal" style="--i:1"><div class="who-emoji">🧴</div><h3>Beauty & Skincare Businesses</h3></div>
+      <div class="who-card reveal" style="--i:2"><div class="who-emoji">🍽️</div><h3>Food Businesses</h3></div>
+      <div class="who-card reveal" style="--i:3"><div class="who-emoji">🏢</div><h3>Corporate Businesses</h3></div>
+      <div class="who-card reveal" style="--i:4"><div class="who-emoji">🎁</div><h3>Gift Businesses</h3></div>
+      <div class="who-card reveal" style="--i:5"><div class="who-emoji">🎉</div><h3>Events</h3></div>
+      <div class="who-card reveal" style="--i:6"><div class="who-emoji">🚀</div><h3>Startups</h3></div>
+      <div class="who-card reveal" style="--i:7"><div class="who-emoji">🏪</div><h3>Small Businesses</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">FAQ</p>
+      <h2>Good to know.</h2>
+    </div>
+    <div class="faq reveal">
+      <details class="faq-item">
+        <summary>What services do you offer?<span class="faq-icon">+</span></summary>
+        <p>We create custom packaging and boxes, branded shopping bags, business branding, labels and product packaging, promotional printing, branded ribbons, marketing and print materials, and custom design and production work.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I provide my own design?<span class="faq-icon">+</span></summary>
+        <p>Yes. If you already have a design ready, share it with us and we'll produce it to your specification.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you help with my design?<span class="faq-icon">+</span></summary>
+        <p>Yes. If you don't have a design yet, tell us your idea and our team will design it for you as part of our custom design and production service.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I place an order or request an enquiry?<span class="faq-icon">+</span></summary>
+        <p>Fill in the enquiry form on this website, message us on WhatsApp, or send us an email. Tell us what you need and we'll take it from there.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you deliver?<span class="faq-icon">+</span></summary>
+        <p>Delivery details are arranged directly with our team based on your order and location. Reach out via WhatsApp or the enquiry form and we'll confirm what works for you.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How can I contact you?<span class="faq-icon">+</span></summary>
+        <p>You can reach us by WhatsApp on 0809 374 6831, by email at hello@theexceptionalart.com, or through the enquiry form below. We're based in Lagos, Nigeria.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="cta-dots" aria-hidden="true"></div>
+  <div class="wrap reveal">
+    <h2>Ready to make your brand stand out?</h2>
+    <p>Let's turn your idea into something exceptional.</p>
+    <div class="cta-btns">
+      <a href="#contact" class="btn btn-yellow">Start a Project</a>
+      <a href="https://wa.me/2348093746831?text=Hi%20The%20Exceptional%20Art%20%26%20Prints%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" class="btn btn-light">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <p class="eyebrow">Get In Touch</p>
+      <h2>Let's start your project.</h2>
+      <p class="desc">Tell us a little about what you need and we'll get back to you, usually the same day.</p>
+      <div class="info-list">
+        <div class="info-item">
+          <div class="info-ico">📍</div>
+          <div><div class="label">Studio</div><div class="val">Lagos, Nigeria</div></div>
+        </div>
+        <div class="info-item">
+          <div class="info-ico">✉️</div>
+          <div><div class="label">Email</div><a class="val" href="mailto:hello@theexceptionalart.com">hello@theexceptionalart.com</a></div>
+        </div>
+        <div class="info-item">
+          <div class="info-ico">💬</div>
+          <div><div class="label">WhatsApp</div><a class="val" href="https://wa.me/2348093746831" target="_blank" rel="noopener">0809 374 6831</a></div>
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="https://instagram.com/theexceptionalart" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://tiktok.com/@theexceptionalart" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+        <a href="https://facebook.com/theexceptionalart" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <div id="formWrap">
+        <h3>Start a project enquiry</h3>
+        <form id="enquiryForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="fphone">Phone number</label>
+              <input type="tel" id="fphone" name="phone" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="femail">Email</label>
+            <input type="email" id="femail" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="fneed">What do you need?</label>
+            <select id="fneed" name="need" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Custom Packaging</option>
+              <option>Branded Shopping Bags</option>
+              <option>Business Branding</option>
+              <option>Promotional Printing</option>
+              <option>Custom Boxes</option>
+              <option>Labels & Product Packaging</option>
+              <option>Branded Ribbons</option>
+              <option>Marketing / Print Materials</option>
+              <option>Custom Design & Production</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fmsg">Message</label>
+            <textarea id="fmsg" name="message" required placeholder="Tell us a bit about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Enquiry</button>
+          <p class="form-note">This opens your email app with your details pre filled to hello@theexceptionalart.com.</p>
+        </form>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✓</div>
+        <h3>Your email app should now be open</h3>
+        <p style="color:rgba(250,250,246,.7);margin-top:10px;">If it didn't open, email us directly at <a href="mailto:hello@theexceptionalart.com" style="color:var(--green-bright);">hello@theexceptionalart.com</a> or message us on <a href="https://wa.me/2348093746831" target="_blank" rel="noopener" style="color:var(--green-bright);">WhatsApp</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="images/logo-black-800.jpg" alt="" width="36" height="36" style="border-radius:6px;">
+          <span>The Exceptional Art & Prints</span>
+        </div>
+        <p class="footer-tagline">A perfect blend of creativity, clarity and communication. Creative branding, printing and packaging, made in Lagos.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#process">Process</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Lagos, Nigeria</li>
+          <li><a href="mailto:hello@theexceptionalart.com">hello@theexceptionalart.com</a></li>
+          <li><a href="https://wa.me/2348093746831" target="_blank" rel="noopener">0809 374 6831</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/theexceptionalart" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://tiktok.com/@theexceptionalart" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://facebook.com/theexceptionalart" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> The Exceptional Art & Prints. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/theexceptionalart" target="_blank" rel="noopener">@theexceptionalart</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/2348093746831?text=Hi%20The%20Exceptional%20Art%20%26%20Prints%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16.01 3C9.38 3 4 8.38 4 15.01c0 2.35.63 4.55 1.73 6.45L4 29l7.72-1.7c1.79.98 3.85 1.54 6.29 1.54 6.63 0 12.01-5.38 12.01-12.01C30 8.38 22.64 3 16.01 3zm7.03 17.2c-.3.85-1.5 1.55-2.45 1.75-.65.14-1.5.25-4.35-.93-3.65-1.5-6-5.2-6.18-5.45-.18-.25-1.47-1.96-1.47-3.74s.93-2.66 1.26-3.02c.32-.36.71-.45.94-.45.23 0 .47 0 .67.01.22.01.5-.08.79.6.3.7 1.01 2.43 1.1 2.6.09.18.15.39.03.64-.12.25-.18.4-.36.62-.18.21-.38.47-.54.63-.18.18-.37.38-.16.74.21.36.93 1.53 1.99 2.48 1.37 1.22 2.52 1.6 2.88 1.78.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.8-.18.33.12 2.06.97 2.41 1.15.35.18.58.27.67.42.09.15.09.86-.21 1.71z"/></svg>
+</a>
+
+<script>
+(function(){
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- header scroll state ---- */
+  var header = document.getElementById('siteHeader');
+  var onScroll = function(){
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---- mobile menu ---- */
+  var burger = document.getElementById('burgerBtn');
+  var mmenu = document.getElementById('mobileMenu');
+  var mmClose = document.getElementById('mmCloseBtn');
+  burger.addEventListener('click', function(){
+    var open = mmenu.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mmClose.addEventListener('click', function(){
+    mmenu.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  });
+  mmenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mmenu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---- hero entrance ---- */
+  window.addEventListener('load', function(){
+    document.getElementById('heroHeading').classList.add('play');
+    document.getElementById('heroSub').classList.add('play');
+    document.getElementById('heroCtas').classList.add('play');
+    document.getElementById('heroCollage').classList.add('play');
+  });
+
+  /* ---- scroll reveals ---- */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-scale, .stagger');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- process timeline fill ---- */
+  var track = document.getElementById('processTrack');
+  var fill = document.getElementById('processFill');
+  var steps = document.querySelectorAll('[data-step]');
+  if('IntersectionObserver' in window){
+    var stepIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+        }
+      });
+      var activeCount = document.querySelectorAll('[data-step].in').length;
+      if(fill) fill.style.width = (activeCount/steps.length*100) + '%';
+    }, {threshold:0.5});
+    steps.forEach(function(s){ stepIo.observe(s); });
+  }
+
+  /* ---- portfolio filter ---- */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var items = document.querySelectorAll('.p-item');
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.getAttribute('data-filter');
+      items.forEach(function(item){
+        var cats = item.getAttribute('data-cat');
+        var show = (f === 'all') || cats.indexOf(f) !== -1;
+        item.classList.toggle('hide', !show);
+      });
+    });
+  });
+
+  /* ---- contact form ---- */
+  var form = document.getElementById('enquiryForm');
+  var formWrap = document.getElementById('formWrap');
+  var success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    var name = document.getElementById('fname').value.trim();
+    var phone = document.getElementById('fphone').value.trim();
+    var email = document.getElementById('femail').value.trim();
+    var need = document.getElementById('fneed').value;
+    var message = document.getElementById('fmsg').value.trim();
+
+    var subject = 'Project Enquiry from ' + name + ' - ' + need;
+    var body =
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Email: ' + email + '\n' +
+      'What they need: ' + need + '\n\n' +
+      'Message:\n' + message;
+
+    var mailto = 'mailto:hello@theexceptionalart.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+
+    formWrap.style.display = 'none';
+    success.classList.add('show');
+  });
+
+})();
+</script>
+
+</body>
+</html>
