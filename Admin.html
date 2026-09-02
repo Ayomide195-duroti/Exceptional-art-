@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · The Exceptional Art & Prints</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+:root{
+  --ink:#101210; --paper:#FAFAF6; --paper-dim:#F1EFE7;
+  --green:#238C46; --green-bright:#39B95B; --yellow:#F3B516; --orange:#E8641C;
+  --line: rgba(16,18,16,0.14);
+  --font-display:'Space Grotesk', sans-serif;
+  --font-mono:'Space Mono', monospace;
+  --font-body:'Inter', sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper-dim);color:var(--ink);font-family:var(--font-body);}
+.wrap{max-width:900px;margin:0 auto;padding:40px 20px 80px;}
+h1{font-family:var(--font-display);font-size:26px;margin:0 0 6px;}
+.sub{font-family:var(--font-mono);font-size:12.5px;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:30px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:24px;}
+.gate{text-align:center;padding:60px 20px;}
+.gate p{color:rgba(16,18,16,.6);margin-bottom:20px;}
+button{font-family:inherit;cursor:pointer;border:none;border-radius:100px;padding:12px 24px;font-size:14px;font-weight:600;}
+.btn-primary{background:var(--green);color:#fff;}
+.btn-primary:hover{background:var(--green-bright);}
+.btn-danger{background:transparent;color:#c0392b;border:1.5px solid #c0392b;padding:8px 14px;font-size:12.5px;}
+.btn-logout{background:transparent;border:1.5px solid var(--line);color:var(--ink);padding:8px 16px;font-size:12.5px;}
+label{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(16,18,16,.55);margin:16px 0 6px;}
+label:first-child{margin-top:0;}
+input[type=text], input[type=file], select{
+  width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;
+  font-family:var(--font-body);font-size:14.5px;background:var(--paper-dim);color:var(--ink);
+}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;}
+#uploadStatus{margin-top:14px;font-family:var(--font-mono);font-size:12.5px;}
+#uploadStatus.ok{color:var(--green);}
+#uploadStatus.err{color:#c0392b;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:10px;}
+.gitem{position:relative;border-radius:10px;overflow:hidden;background:var(--paper-dim);border:1px solid var(--line);}
+.gitem img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+.gitem .meta{padding:8px 10px;font-size:11.5px;}
+.gitem .meta .cat{font-family:var(--font-mono);color:var(--green);text-transform:uppercase;font-size:10px;letter-spacing:.05em;}
+.gitem .del{position:absolute;top:8px;right:8px;}
+.empty-note{font-family:var(--font-mono);font-size:13px;color:rgba(16,18,16,.5);padding:20px 0;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div id="gate" class="gate card" style="display:none;">
+    <h1>Admin</h1>
+    <p>Log in to manage the gallery.</p>
+    <button class="btn-primary" onclick="netlifyIdentity.open('login')">Log In</button>
+  </div>
+
+  <div id="panel" style="display:none;">
+    <div class="topbar">
+      <div>
+        <h1>Gallery Admin</h1>
+        <p class="sub">The Exceptional Art &amp; Prints</p>
+      </div>
+      <button class="btn-logout" onclick="netlifyIdentity.logout()">Log Out</button>
+    </div>
+
+    <div class="card">
+      <h2 style="font-family:var(--font-display);font-size:18px;margin:0;">Upload a picture</h2>
+      <form id="uploadForm">
+        <label for="fFile">Picture</label>
+        <input type="file" id="fFile" accept="image/*" required>
+
+        <label for="fCategory">Category</label>
+        <select id="fCategory" required>
+          <option value="packaging">Packaging</option>
+          <option value="boxes">Boxes</option>
+          <option value="prints">Prints</option>
+          <option value="branding">Branding</option>
+        </select>
+
+        <label for="fCaption">Title / description (optional)</label>
+        <input type="text" id="fCaption" placeholder="e.g. Custom gift box for Favy Body Goals">
+
+        <div style="margin-top:20px;">
+          <button type="submit" class="btn-primary" id="uploadBtn">Publish to Gallery</button>
+        </div>
+        <p id="uploadStatus"></p>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2 style="font-family:var(--font-display);font-size:18px;margin:0 0 4px;">Manage gallery</h2>
+      <p style="font-size:13px;color:rgba(16,18,16,.55);margin:0 0 4px;">Everything currently live in Our Gallery.</p>
+      <div class="grid" id="manageGrid"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var CLOUD_NAME = 'zvn8gjzf';
+var UPLOAD_PRESET = 'Gallery';
+var DELETE_FN_URL = '/.netlify/functions/delete-image';
+
+var gate = document.getElementById('gate');
+var panel = document.getElementById('panel');
+
+function showGate(){ gate.style.display = 'block'; panel.style.display = 'none'; }
+function showPanel(){ gate.style.display = 'none'; panel.style.display = 'block'; loadManageGrid(); }
+
+window.netlifyIdentity && netlifyIdentity.on('init', function(user){
+  user ? showPanel() : showGate();
+});
+window.netlifyIdentity && netlifyIdentity.on('login', function(){ showPanel(); });
+window.netlifyIdentity && netlifyIdentity.on('logout', function(){ showGate(); });
+if(window.netlifyIdentity){ netlifyIdentity.init(); } else { showGate(); }
+
+/* ---- upload ---- */
+var uploadForm = document.getElementById('uploadForm');
+var uploadStatus = document.getElementById('uploadStatus');
+var uploadBtn = document.getElementById('uploadBtn');
+
+uploadForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  var file = document.getElementById('fFile').files[0];
+  var category = document.getElementById('fCategory').value;
+  var caption = document.getElementById('fCaption').value.trim();
+  if(!file) return;
+
+  uploadBtn.disabled = true;
+  uploadStatus.className = '';
+  uploadStatus.textContent = 'Uploading...';
+
+  var fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', UPLOAD_PRESET);
+  fd.append('tags', 'gallery,' + category);
+  if(caption){ fd.append('context', 'caption=' + caption); }
+
+  fetch('https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/image/upload', {
+    method: 'POST',
+    body: fd
+  })
+  .then(function(res){ if(!res.ok) throw new Error('Upload failed'); return res.json(); })
+  .then(function(data){
+    uploadStatus.className = 'ok';
+    uploadStatus.textContent = 'Published! It will appear in Our Gallery within a minute.';
+    uploadForm.reset();
+    loadManageGrid();
+  })
+  .catch(function(err){
+    uploadStatus.className = 'err';
+    uploadStatus.textContent = 'Something went wrong. Please try again.';
+  })
+  .finally(function(){ uploadBtn.disabled = false; });
+});
+
+/* ---- manage / delete ---- */
+var manageGrid = document.getElementById('manageGrid');
+
+function buildThumb(item){
+  return 'https://res.cloudinary.com/' + CLOUD_NAME + '/image/upload/f_auto,q_auto,c_fill,w_300,h_375/v' + item.version + '/' + item.public_id + '.' + item.format;
+}
+
+function loadManageGrid(){
+  manageGrid.innerHTML = '<p class="empty-note">Loading...</p>';
+  fetch('https://res.cloudinary.com/' + CLOUD_NAME + '/image/list/gallery.json')
+    .then(function(res){ if(!res.ok) throw new Error('failed'); return res.json(); })
+    .then(function(data){
+      var resources = data.resources || [];
+      if(!resources.length){
+        manageGrid.innerHTML = '<p class="empty-note">No pictures uploaded yet.</p>';
+        return;
+      }
+      var html = '';
+      resources.forEach(function(item){
+        var cats = (item.tags || []).filter(function(t){ return t !== 'gallery'; }).join(', ');
+        html += '<div class="gitem">' +
+          '<img src="' + buildThumb(item) + '" alt="">' +
+          '<div class="meta"><span class="cat">' + cats + '</span></div>' +
+          '<button class="del btn-danger" onclick="deleteImage(\'' + item.public_id + '\', this)">Delete</button>' +
+          '</div>';
+      });
+      manageGrid.innerHTML = html;
+    })
+    .catch(function(){
+      manageGrid.innerHTML = '<p class="empty-note">Could not load images.</p>';
+    });
+}
+
+function deleteImage(publicId, btn){
+  if(!confirm('Delete this picture? This cannot be undone.')) return;
+  btn.disabled = true;
+  btn.textContent = 'Deleting...';
+
+  var user = netlifyIdentity.currentUser();
+  var token = user ? user.token.access_token : null;
+
+  fetch(DELETE_FN_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({ public_id: publicId })
+  })
+  .then(function(res){ if(!res.ok) throw new Error('delete failed'); return res.json(); })
+  .then(function(){ loadManageGrid(); })
+  .catch(function(){
+    alert('Could not delete this picture. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Delete';
+  });
+}
+</script>
+</body>
+  </html>
