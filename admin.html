@@ -1,83 +1,110 @@
 <!doctype html>
-<html lang="en"> 
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Admin · The Exceptional Art & Prints</title>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --ink:#101210; --paper:#FAFAF6; --paper-dim:#F1EFE7;
   --green:#238C46; --green-bright:#39B95B; --yellow:#F3B516; --orange:#E8641C;
-  --line: rgba(16,18,16,0.14);
-  --font-display:'Space Grotesk', sans-serif;
-  --font-mono:'Space Mono', monospace;
-  --font-body:'Inter', sans-serif;
+  --line:rgba(16,18,16,0.14);
+  --font-display:'Space Grotesk',sans-serif;
+  --font-mono:'Space Mono',monospace;
+  --font-body:'Inter',sans-serif;
 }
 *{box-sizing:border-box;}
 body{margin:0;background:var(--paper-dim);color:var(--ink);font-family:var(--font-body);}
-.wrap{max-width:900px;margin:0 auto;padding:40px 20px 80px;}
+.wrap{max-width:900px;margin:0 auto;padding:28px 18px 80px;}
 h1{font-family:var(--font-display);font-size:26px;margin:0 0 6px;}
-.sub{font-family:var(--font-mono);font-size:12.5px;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:30px;}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:24px;}
-.gate{text-align:center;padding:60px 20px;}
-.gate p{color:rgba(16,18,16,.6);margin-bottom:20px;}
-button{font-family:inherit;cursor:pointer;border:none;border-radius:100px;padding:12px 24px;font-size:14px;font-weight:600;}
+h2{font-family:var(--font-display);font-size:18px;margin:0 0 4px;}
+.sub{font-family:var(--font-mono);font-size:12px;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin:0;}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:22px;}
+.gate{max-width:420px;margin:60px auto 0;text-align:center;}
+.gate p{color:rgba(16,18,16,.6);margin:6px 0 18px;font-size:14.5px;}
+button,.btn{font-family:inherit;cursor:pointer;border:none;border-radius:100px;padding:12px 22px;font-size:14px;font-weight:600;text-decoration:none;display:inline-block;}
+button:disabled{opacity:.55;cursor:not-allowed;}
 .btn-primary{background:var(--green);color:#fff;}
-.btn-primary:hover{background:var(--green-bright);}
-.btn-danger{background:transparent;color:#c0392b;border:1.5px solid #c0392b;padding:8px 14px;font-size:12.5px;}
-.btn-logout{background:transparent;border:1.5px solid var(--line);color:var(--ink);padding:8px 16px;font-size:12.5px;}
+.btn-primary:hover:not(:disabled){background:var(--green-bright);color:var(--ink);}
+.btn-danger{background:#fff;color:#c0392b;border:1.5px solid #c0392b;padding:7px 13px;font-size:12.5px;}
+.btn-danger:hover:not(:disabled){background:#c0392b;color:#fff;}
+.btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink);padding:9px 16px;font-size:13px;}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
+.topbar .actions{display:flex;gap:8px;flex-wrap:wrap;}
 label{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(16,18,16,.55);margin:16px 0 6px;}
-label:first-child{margin-top:0;}
-input[type=text], input[type=file], select{
+input[type=text],input[type=password],input[type=file],select{
   width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;
-  font-family:var(--font-body);font-size:14.5px;background:var(--paper-dim);color:var(--ink);
+  font-family:var(--font-body);font-size:15px;background:var(--paper-dim);color:var(--ink);
 }
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;}
-#uploadStatus{margin-top:14px;font-family:var(--font-mono);font-size:12.5px;}
-#uploadStatus.ok{color:var(--green);}
-#uploadStatus.err{color:#c0392b;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:10px;}
-.gitem{position:relative;border-radius:10px;overflow:hidden;background:var(--paper-dim);border:1px solid var(--line);}
+input:focus,select:focus{outline:none;border-color:var(--green);}
+.msg{margin-top:14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.5;white-space:pre-line;}
+.msg.ok{color:var(--green);} .msg.err{color:#c0392b;}
+.previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-top:12px;}
+.previews div{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1;background:var(--paper-dim);}
+.previews img{width:100%;height:100%;object-fit:cover;display:block;}
+.previews .st{position:absolute;left:0;right:0;bottom:0;font-family:var(--font-mono);font-size:10px;padding:3px 5px;background:rgba(16,18,16,.75);color:#fff;text-align:center;}
+.bar{height:8px;border-radius:8px;background:var(--paper-dim);overflow:hidden;margin-top:14px;display:none;}
+.bar i{display:block;height:100%;width:0;background:var(--green-bright);transition:width .25s;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:14px;}
+.gitem{border-radius:10px;overflow:hidden;background:var(--paper-dim);border:1px solid var(--line);display:flex;flex-direction:column;}
 .gitem img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
-.gitem .meta{padding:8px 10px;font-size:11.5px;}
-.gitem .meta .cat{font-family:var(--font-mono);color:var(--green);text-transform:uppercase;font-size:10px;letter-spacing:.05em;}
-.gitem .del{position:absolute;top:8px;right:8px;}
-.empty-note{font-family:var(--font-mono);font-size:13px;color:rgba(16,18,16,.5);padding:20px 0;}
+.gitem .meta{padding:9px 10px 4px;font-size:12px;flex:1;}
+.gitem .cat{font-family:var(--font-mono);color:var(--green);text-transform:uppercase;font-size:10px;letter-spacing:.05em;}
+.gitem .cap{margin-top:3px;color:rgba(16,18,16,.7);word-break:break-word;}
+.gitem .btn-danger{margin:6px 10px 10px;}
+.empty-note{font-family:var(--font-mono);font-size:13px;color:rgba(16,18,16,.5);padding:18px 0;grid-column:1/-1;}
+.count{font-family:var(--font-mono);font-size:12px;color:rgba(16,18,16,.5);}
 </style>
 </head>
 <body>
-
 <div class="wrap">
 
-  <div id="gate" class="gate card" style="display:none;">
+  <!-- LOGIN -->
+  <div id="gate" class="card gate" style="display:none;">
     <h1>Admin</h1>
-    <p>Log in to manage the gallery.</p>
-    <button class="btn-primary" onclick="netlifyIdentity.open('login')">Log In</button>
+    <p>Enter the password to manage the gallery.</p>
+    <form id="loginForm">
+      <input type="password" id="pw" placeholder="Password" autocomplete="current-password" required>
+      <div style="margin-top:16px;"><button type="submit" class="btn-primary" id="loginBtn">Log In</button></div>
+      <p class="msg err" id="loginMsg"></p>
+    </form>
+    <a class="btn btn-ghost" href="index.html" style="margin-top:8px;">&larr; Back to website</a>
   </div>
 
+  <!-- PANEL -->
   <div id="panel" style="display:none;">
     <div class="topbar">
       <div>
         <h1>Gallery Admin</h1>
         <p class="sub">The Exceptional Art &amp; Prints</p>
       </div>
-      <button class="btn-logout" onclick="netlifyIdentity.logout()">Log Out</button>
+      <div class="actions">
+        <a class="btn btn-ghost" href="index.html">&larr; Back to website</a>
+        <button class="btn-ghost" id="logoutBtn" type="button">Log Out</button>
+      </div>
     </div>
 
     <div class="card">
-      <h2 style="font-family:var(--font-display);font-size:18px;margin:0;">Upload a picture</h2>
+      <h2>Add pictures</h2>
+      <p style="font-size:13px;color:rgba(16,18,16,.55);margin:0;">You can pick many pictures at once. They are made smaller automatically.</p>
       <form id="uploadForm">
-        <label for="fFile">Picture</label>
-        <input type="file" id="fFile" accept="image/*" required>
+        <label for="fFile">Pictures</label>
+        <input type="file" id="fFile" accept="image/*" multiple required>
+        <div class="previews" id="previews"></div>
 
         <label for="fCategory">Category</label>
         <select id="fCategory" required>
           <option value="packaging">Packaging</option>
-          <option value="boxes">Boxes</option>
-          <option value="prints">Prints</option>
+          <option value="bags">Bags</option>
           <option value="branding">Branding</option>
+          <option value="printing">Printing</option>
+          <option value="custom">Custom Projects</option>
         </select>
 
         <label for="fCaption">Title / description (optional)</label>
@@ -86,134 +113,188 @@ input[type=text], input[type=file], select{
         <div style="margin-top:20px;">
           <button type="submit" class="btn-primary" id="uploadBtn">Publish to Gallery</button>
         </div>
-        <p id="uploadStatus"></p>
+        <div class="bar" id="bar"><i id="barFill"></i></div>
+        <p class="msg" id="uploadMsg"></p>
       </form>
     </div>
 
     <div class="card">
-      <h2 style="font-family:var(--font-display);font-size:18px;margin:0 0 4px;">Manage gallery</h2>
-      <p style="font-size:13px;color:rgba(16,18,16,.55);margin:0 0 4px;">Everything currently live in Our Gallery.</p>
+      <h2>Manage gallery</h2>
+      <p class="count" id="count">&nbsp;</p>
       <div class="grid" id="manageGrid"></div>
     </div>
-
   </div>
 </div>
 
 <script>
-var CLOUD_NAME = 'zvn8gjzf';
-var UPLOAD_PRESET = 'Gallery';
-var DELETE_FN_URL = '/.netlify/functions/delete-image';
+var SB_URL = 'https://vthxzibcejzlfxvvaxus.supabase.co';
+var SB_KEY = 'sb_publishable_SCV0Bg_ndzNq-_Vrj9bRKw_dFeHXUB1';
+var ADMIN_EMAIL = 'admin@theexceptionalart.com';   // the admin account created in Supabase
+var BUCKET = 'gallery';
+var MAX_SIDE = 1600;          // longest side of a saved picture, in pixels
+var TARGET_BYTES = 300 * 1024; // try to keep each picture under about 300 KB
 
+var sb = supabase.createClient(SB_URL, SB_KEY);
 var gate = document.getElementById('gate');
 var panel = document.getElementById('panel');
 
 function showGate(){ gate.style.display = 'block'; panel.style.display = 'none'; }
 function showPanel(){ gate.style.display = 'none'; panel.style.display = 'block'; loadManageGrid(); }
 
-window.netlifyIdentity && netlifyIdentity.on('init', function(user){
-  user ? showPanel() : showGate();
+sb.auth.getSession().then(function(r){ r.data.session ? showPanel() : showGate(); });
+sb.auth.onAuthStateChange(function(ev, session){ if(ev === 'SIGNED_OUT'){ showGate(); } });
+
+/* ---- login / logout ---- */
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var btn = document.getElementById('loginBtn'), msg = document.getElementById('loginMsg');
+  btn.disabled = true; msg.textContent = '';
+  sb.auth.signInWithPassword({ email: ADMIN_EMAIL, password: document.getElementById('pw').value })
+    .then(function(r){
+      if(r.error){ msg.textContent = 'Wrong password. Please try again.'; }
+      else { document.getElementById('pw').value = ''; showPanel(); }
+    })
+    .catch(function(){ msg.textContent = 'Could not connect. Check your internet.'; })
+    .then(function(){ btn.disabled = false; });
 });
-window.netlifyIdentity && netlifyIdentity.on('login', function(){ showPanel(); });
-window.netlifyIdentity && netlifyIdentity.on('logout', function(){ showGate(); });
-if(window.netlifyIdentity){ netlifyIdentity.init(); } else { showGate(); }
+document.getElementById('logoutBtn').addEventListener('click', function(){ sb.auth.signOut().then(showGate); });
+
+/* ---- shrink a picture ---- */
+function loadBitmap(file){
+  if(window.createImageBitmap){
+    return createImageBitmap(file, {imageOrientation:'from-image'}).catch(function(){ return viaImg(file); });
+  }
+  return viaImg(file);
+}
+function viaImg(file){
+  return new Promise(function(res, rej){
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function(){ URL.revokeObjectURL(url); res(img); };
+    img.onerror = function(){ rej(new Error('bad image')); };
+    img.src = url;
+  });
+}
+function toBlob(canvas, type, q){
+  return new Promise(function(res){ canvas.toBlob(res, type, q); });
+}
+async function shrink(file){
+  var bmp = await loadBitmap(file);
+  var w = bmp.width, h = bmp.height, scale = Math.min(1, MAX_SIDE / Math.max(w, h));
+  var cw = Math.round(w * scale), ch = Math.round(h * scale);
+  var canvas = document.createElement('canvas');
+  canvas.width = cw; canvas.height = ch;
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cw, ch);
+  ctx.drawImage(bmp, 0, 0, cw, ch);
+  var type = 'image/webp', q = 0.82, blob = await toBlob(canvas, type, q);
+  if(!blob || blob.type !== 'image/webp'){ type = 'image/jpeg'; blob = await toBlob(canvas, type, q); }
+  while(blob.size > TARGET_BYTES && q > 0.5){ q -= 0.08; blob = await toBlob(canvas, type, q); }
+  // still too big? make it a bit smaller and try once more
+  if(blob.size > TARGET_BYTES * 1.5){
+    var c2 = document.createElement('canvas');
+    c2.width = Math.round(cw * 0.75); c2.height = Math.round(ch * 0.75);
+    var x2 = c2.getContext('2d'); x2.fillStyle = '#fff'; x2.fillRect(0,0,c2.width,c2.height);
+    x2.drawImage(canvas, 0, 0, c2.width, c2.height);
+    blob = await toBlob(c2, type, 0.7);
+  }
+  return { blob: blob, ext: type === 'image/webp' ? 'webp' : 'jpg' };
+}
+function kb(n){ return n >= 1048576 ? (n/1048576).toFixed(1) + ' MB' : Math.round(n/1024) + ' KB'; }
+
+/* ---- previews ---- */
+var fFile = document.getElementById('fFile'), previews = document.getElementById('previews');
+fFile.addEventListener('change', function(){
+  previews.innerHTML = '';
+  Array.prototype.forEach.call(fFile.files, function(f){
+    var d = document.createElement('div'), i = document.createElement('img'), s = document.createElement('span');
+    i.src = URL.createObjectURL(f); i.onload = function(){ URL.revokeObjectURL(i.src); };
+    s.className = 'st'; s.textContent = kb(f.size);
+    d.appendChild(i); d.appendChild(s); previews.appendChild(d);
+  });
+});
 
 /* ---- upload ---- */
-var uploadForm = document.getElementById('uploadForm');
-var uploadStatus = document.getElementById('uploadStatus');
-var uploadBtn = document.getElementById('uploadBtn');
-
-uploadForm.addEventListener('submit', function(e){
+document.getElementById('uploadForm').addEventListener('submit', async function(e){
   e.preventDefault();
-  var file = document.getElementById('fFile').files[0];
+  var files = Array.prototype.slice.call(fFile.files);
+  if(!files.length) return;
   var category = document.getElementById('fCategory').value;
   var caption = document.getElementById('fCaption').value.trim();
-  if(!file) return;
+  var btn = document.getElementById('uploadBtn'), msg = document.getElementById('uploadMsg');
+  var bar = document.getElementById('bar'), fill = document.getElementById('barFill');
+  btn.disabled = true; msg.className = 'msg'; bar.style.display = 'block'; fill.style.width = '0';
+  var done = 0, failed = 0, savedFrom = 0, savedTo = 0;
 
-  uploadBtn.disabled = true;
-  uploadStatus.className = '';
-  uploadStatus.textContent = 'Uploading...';
+  for(var n = 0; n < files.length; n++){
+    var f = files[n];
+    msg.textContent = 'Reducing and uploading ' + (n + 1) + ' of ' + files.length + '...';
+    try{
+      var out = await shrink(f);
+      var path = Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '.' + out.ext;
+      var up = await sb.storage.from(BUCKET).upload(path, out.blob, { contentType: out.blob.type, cacheControl: '31536000' });
+      if(up.error) throw up.error;
+      var pub = sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+      var ins = await sb.from('gallery').insert({ image_url: pub, path: path, category: category, caption: caption || null });
+      if(ins.error){ await sb.storage.from(BUCKET).remove([path]); throw ins.error; }
+      done++; savedFrom += f.size; savedTo += out.blob.size;
+    }catch(err){ failed++; console.error(err); }
+    fill.style.width = Math.round((n + 1) / files.length * 100) + '%';
+  }
 
-  var fd = new FormData();
-  fd.append('file', file);
-  fd.append('upload_preset', UPLOAD_PRESET);
-  fd.append('tags', 'gallery,' + category);
-  if(caption){ fd.append('context', 'caption=' + caption); }
-
-  fetch('https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/image/upload', {
-    method: 'POST',
-    body: fd
-  })
-  .then(function(res){ if(!res.ok) throw new Error('Upload failed'); return res.json(); })
-  .then(function(data){
-    uploadStatus.className = 'ok';
-    uploadStatus.textContent = 'Published! It will appear in Our Gallery within a minute.';
-    uploadForm.reset();
+  if(done){
+    msg.className = 'msg ok';
+    msg.textContent = done + ' picture' + (done > 1 ? 's' : '') + ' published! Made smaller: ' + kb(savedFrom) + ' → ' + kb(savedTo) + '.' +
+      (failed ? '\n' + failed + ' failed. Please try those again.' : '');
+    document.getElementById('uploadForm').reset(); previews.innerHTML = '';
     loadManageGrid();
-  })
-  .catch(function(err){
-    uploadStatus.className = 'err';
-    uploadStatus.textContent = 'Something went wrong. Please try again.';
-  })
-  .finally(function(){ uploadBtn.disabled = false; });
+  } else {
+    msg.className = 'msg err';
+    msg.textContent = 'Upload failed. Please log in again and try once more.';
+  }
+  btn.disabled = false;
+  setTimeout(function(){ bar.style.display = 'none'; }, 1200);
 });
 
 /* ---- manage / delete ---- */
 var manageGrid = document.getElementById('manageGrid');
-
-function buildThumb(item){
-  return 'https://res.cloudinary.com/' + CLOUD_NAME + '/image/upload/f_auto,q_auto,c_fill,w_300,h_375/v' + item.version + '/' + item.public_id + '.' + item.format;
-}
+var CAT = {packaging:'Packaging', bags:'Bags', branding:'Branding', printing:'Printing', custom:'Custom Projects'};
 
 function loadManageGrid(){
   manageGrid.innerHTML = '<p class="empty-note">Loading...</p>';
-  fetch('https://res.cloudinary.com/' + CLOUD_NAME + '/image/list/gallery.json')
-    .then(function(res){ if(!res.ok) throw new Error('failed'); return res.json(); })
-    .then(function(data){
-      var resources = data.resources || [];
-      if(!resources.length){
-        manageGrid.innerHTML = '<p class="empty-note">No pictures uploaded yet.</p>';
-        return;
-      }
-      var html = '';
-      resources.forEach(function(item){
-        var cats = (item.tags || []).filter(function(t){ return t !== 'gallery'; }).join(', ');
-        html += '<div class="gitem">' +
-          '<img src="' + buildThumb(item) + '" alt="">' +
-          '<div class="meta"><span class="cat">' + cats + '</span></div>' +
-          '<button class="del btn-danger" onclick="deleteImage(\'' + item.public_id + '\', this)">Delete</button>' +
-          '</div>';
-      });
-      manageGrid.innerHTML = html;
-    })
-    .catch(function(){
-      manageGrid.innerHTML = '<p class="empty-note">Could not load images.</p>';
+  sb.from('gallery').select('*').order('created_at', { ascending: false }).then(function(r){
+    if(r.error){ manageGrid.innerHTML = '<p class="empty-note">Could not load pictures.</p>'; return; }
+    var rows = r.data || [];
+    document.getElementById('count').textContent = rows.length + ' picture' + (rows.length === 1 ? '' : 's') + ' live on the website';
+    if(!rows.length){ manageGrid.innerHTML = '<p class="empty-note">No pictures uploaded yet.</p>'; return; }
+    manageGrid.innerHTML = '';
+    rows.forEach(function(item){
+      var box = document.createElement('div'); box.className = 'gitem';
+      var img = document.createElement('img'); img.src = item.image_url; img.alt = ''; img.loading = 'lazy';
+      var meta = document.createElement('div'); meta.className = 'meta';
+      var cat = document.createElement('div'); cat.className = 'cat'; cat.textContent = CAT[item.category] || item.category;
+      meta.appendChild(cat);
+      if(item.caption){ var cap = document.createElement('div'); cap.className = 'cap'; cap.textContent = item.caption; meta.appendChild(cap); }
+      var del = document.createElement('button'); del.className = 'btn-danger'; del.type = 'button'; del.textContent = 'Delete';
+      del.addEventListener('click', function(){ deleteItem(item, del); });
+      box.appendChild(img); box.appendChild(meta); box.appendChild(del);
+      manageGrid.appendChild(box);
     });
+  });
 }
 
-function deleteImage(publicId, btn){
+async function deleteItem(item, btn){
   if(!confirm('Delete this picture? This cannot be undone.')) return;
-  btn.disabled = true;
-  btn.textContent = 'Deleting...';
-
-  var user = netlifyIdentity.currentUser();
-  var token = user ? user.token.access_token : null;
-
-  fetch(DELETE_FN_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    },
-    body: JSON.stringify({ public_id: publicId })
-  })
-  .then(function(res){ if(!res.ok) throw new Error('delete failed'); return res.json(); })
-  .then(function(){ loadManageGrid(); })
-  .catch(function(){
-    alert('Could not delete this picture. Please try again.');
-    btn.disabled = false;
-    btn.textContent = 'Delete';
-  });
+  btn.disabled = true; btn.textContent = 'Deleting...';
+  try{
+    var a = await sb.from('gallery').delete().eq('id', item.id);
+    if(a.error) throw a.error;
+    await sb.storage.from(BUCKET).remove([item.path]);
+    loadManageGrid();
+  }catch(err){
+    alert('Could not delete this picture. Please log in again and try once more.');
+    btn.disabled = false; btn.textContent = 'Delete';
+  }
 }
 </script>
 </body>
-  </html>
+</html>
